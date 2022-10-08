@@ -1,0 +1,23 @@
+{
+  "name": "orderapi",
+  "version": "1.0.0",
+  "description": "Ordering System",
+  "scripts": {
+    "start": "node ./bin/www.js",
+    "devstart": "nodemon ./bin/www.js"
+  },
+  "main": "index.js",
+  "author": "Gao",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dot-env": "^0.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "helmet": "^5.0.2",
+    "morgan": "^1.10.0",
+    "node-postgres": "^0.6.2",
+    "nodemon": "^2.0.16",
+    "pg": "^8.7.3"
+  }
+}

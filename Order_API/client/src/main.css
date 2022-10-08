@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* GENERAL STYLING */
+
+h1.header {
+  text-align: center;
+}
+
+h4, h5 {
+  color: #212121;
+}
+
+/* SITE-WIDE STYLING */
+
+.modal{
+  color: grey;
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #212121;
+  color: white;
+  flex-direction: column;
+}
+
+.create-form label{
+  color: whitesmoke !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px !important;
+}
+
+.nav {
+  background-color: #212121;
+}
+
+.footer {
+  background-color: #212121;
+  padding: 20px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+td, th {
+  padding: 5px;
+}
+
+div.space {
+  height: 20vh;
+}
+
+/* LANDING PAGE STYLING */
+
+.logo img {
+  position: absolute;
+  top: 80px;
+  left: 40px;
+  width: 220px;
+}
+
+.results-table {
+  color: #212121;
+}
+
+.push_right {
+  margin-left: auto;
+}
+
+.wrapper {
+  padding: 20px;
+}
+
+.line {
+  display: inline-table;
+}
+
+.ratingHover {
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 3px;
+  cursor: pointer;
+}

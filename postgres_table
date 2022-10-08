@@ -1,0 +1,118 @@
+
+CREATE TABLE IF NOT EXISTS menu_item (
+	menu_id SERIAL NOT NULL,
+    sort_id TEXT NOT NULL,
+	item_name TEXT NOT NULL,
+	item_description TEXT,
+	item_cost FLOAT NOT NULL,
+	item_type TEXT NOT NULL,
+	item_spice BOOL NOT NULL,
+	PRIMARY KEY (menu_id)
+);
+
+CREATE TABLE IF NOT EXISTS order_cart (
+	order_id SERIAL NOT NULL,
+	cust_id INT NOT NULL,
+    order_time TIME NOT NULL,
+    order_date DATE NOT NULL,
+    payment TEXT NOT NULL,
+    order_type TEXT NOT NULL,
+	num_items INT NOT NULL,
+    sub_total FLOAT NOT NULL,
+	total_cost FLOAT NOT NULL,
+	PRIMARY KEY (order_id),
+    FOREIGN KEY (cust_id) REFERENCES customer (cust_id)
+);
+
+
+CREATE TABLE IF NOT EXISTS order_entry (
+	order_id INT NOT NULL,
+	menu_id INT NOT NULL,
+	quantity INT NOT NULL,
+    entry_description TEXT NOT NULL,
+	PRIMARY KEY (order_id, menu_id),
+	FOREIGN KEY (order_id) REFERENCES order_cart (order_id),
+	FOREIGN KEY (menu_id) REFERENCES menu_item (menu_id)
+);
+
+CREATE TABLE IF NOT EXISTS customer (
+	cust_id SERIAL NOT NULL,
+	first_name TEXT,
+	last_name TEXT,
+	email TEXT,
+    phone_num TEXT,
+	PRIMARY KEY (cust_id)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS cust_address (
+    address_id SERIAL NOT NULL,
+    cust_id INT NOT NULL,
+    street_num INT,
+    street_name TEXT,
+    apt_name TEXT,
+    apt_num TEXT,
+    city TEXT,
+    zipcode INT,
+    PRIMARY KEY (address_id),
+    FOREIGN KEY (cust_id) REFERENCES customer (cust_id)
+);
+
+-- CREATE TABLE IF NOT EXISTS credit_card (
+-- 	card_no INT NOT NULL,
+-- 	cvv INT NOT NULL,
+-- 	expiration_date DATE NOT NULL,
+-- 	PRIMARY KEY (card_no)
+-- );
+
+-- CREATE TABLE IF NOT EXISTS user_ (
+-- 	cust_id SERIAL NOT NULL,
+-- 	username TEXT NOT NULL,
+-- 	first_name TEXT NOT NULL,
+-- 	last_name TEXT NOT NULL,
+-- 	address TEXT NOT NULL,
+-- 	email TEXT NOT NULL,
+-- 	email_notif BOOL NOT NULL,
+-- 	is_admin BOOL NOT NULL,
+-- 	PRIMARY KEY (cust_id)
+-- );
+
+-- CREATE TABLE IF NOT EXISTS wishlist (
+-- 	wishlist_id SERIAL NOT NULL,
+-- 	cust_id INT NOT NULL,
+-- 	num_items INT NOT NULL,
+-- 	PRIMARY KEY (wishlist_id),
+-- 	FOREIGN KEY (cust_id) REFERENCES user_ (cust_id)
+-- );
+
+
+
+-- CREATE TABLE IF NOT EXISTS wishlist_entry (
+-- 	wishlist_id INT NOT NULL,
+-- 	menu_id INT NOT NULL,
+-- 	quantity INT NOT NULL,
+-- 	PRIMARY KEY (wishlist_id, menu_id),
+-- 	FOREIGN KEY (wishlist_id) REFERENCES wishlist (wishlist_id),
+-- 	FOREIGN KEY (menu_id) REFERENCES menu_item (menu_id)
+-- );
+
+-- CREATE TABLE IF NOT EXISTS payment (
+-- 	payment_id SERIAL NOT NULL,
+-- 	cust_id INT NOT NULL,
+-- 	card_no INT NOT NULL,
+-- 	PRIMARY KEY (payment_id),
+-- 	FOREIGN KEY (cust_id) references user_ (cust_id),
+-- 	FOREIGN KEY (card_no) references credit_card (card_no)
+-- );
+
+-- CREATE TABLE IF NOT EXISTS rating (
+-- 	rating_id SERIAL NOT NULL,
+-- 	menu_id INT NOT NULL,
+-- 	cust_id INT NOT NULL,
+-- 	rating INT NOT NULL,
+-- 	description TEXT NOT NULL,
+-- 	PRIMARY KEY (rating_id),
+-- 	FOREIGN KEY (menu_id) references menu_item (menu_id),
+-- 	FOREIGN KEY (cust_id) references user_ (cust_id)
+-- );
